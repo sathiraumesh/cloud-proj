@@ -1,0 +1,29 @@
+<div class="container product-container" *ngIf="product">
+    <div class="row">
+        <img [src]="product.imagePath" alt="" width="50%">
+        <div class="col-12 col-md-12">
+            Name: {{product?.name}}
+        </div>
+        <div class="col-12 col-md-12">
+            Price {{product?.price}}
+        </div>
+        <div class="col-12 col-md-12">
+            Section {{product?.section}}
+        </div>
+        <div class="col-12 col-md-12">
+            rack {{product?.rack}}
+        </div>
+        <div class="col-12 col-md-12">
+            number {{product?.number}}
+        </div>
+    </div>
+</div>
+
+<div>
+    <google-map [center]="center" [zoom]="zoom">
+        <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"
+            [title]="marker.title" [options]="marker.options">
+        </map-marker>
+    </google-map>
+
+</div>
