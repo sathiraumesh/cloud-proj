@@ -15,7 +15,7 @@ public enum BaseOption {
             "config_path",
             "PATH",
             "Configuration directory for Shopping samples",
-            new File(System.getProperty("user.home"), "shopping-samples").getAbsolutePath()),
+            new File(".", "shopping-samples").getAbsolutePath()),
     CALL_LOG_FILE("l", "log_file", "FILE", "File for logging API requests and responses"),
     NO_CONFIG("n", "noconfig", "Run samples without a configuration directory"),
     HELP("h", "help", "print this message");
@@ -107,6 +107,7 @@ public enum BaseOption {
 
     public static File checkedConfigPath(CommandLine parsedArgs) {
         String pathString = CONFIG_PATH.getOptionValue(parsedArgs);
+        System.out.println(pathString);
         File path = new File(pathString);
         if (!path.exists()) {
             throw new IllegalArgumentException(
