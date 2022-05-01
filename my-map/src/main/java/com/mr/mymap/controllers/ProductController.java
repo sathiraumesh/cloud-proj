@@ -3,10 +3,7 @@ package com.mr.mymap.controllers;
 import com.mr.mymap.domain.Product;
 import com.mr.mymap.services.ProductService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 

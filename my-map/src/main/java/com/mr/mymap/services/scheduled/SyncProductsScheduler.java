@@ -18,7 +18,7 @@ public class SyncProductsScheduler {
     @Autowired
     private ProductListSync productListSync;
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 10000000)
     public void syncProducts() throws IOException {
         productListSync.execute();
         System.out.println("Syncing the products");
