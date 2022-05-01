@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductSearchService } from 'src/app/core/services/client/product-search.service';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +7,9 @@ import { ProductSearchService } from 'src/app/core/services/client/product-searc
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private productSearchService$: ProductSearchService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.productSearchService$.productAnnounceSubscription.subscribe(data => {
-      console.log(data)
-    })
   }
 
 }
