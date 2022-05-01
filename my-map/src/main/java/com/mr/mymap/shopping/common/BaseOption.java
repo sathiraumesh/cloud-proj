@@ -15,7 +15,7 @@ public enum BaseOption {
             "config_path",
             "PATH",
             "Configuration directory for Shopping samples",
-            new File(BaseOption.class.getClassLoader().getResource("shopping-samples").getFile()).getAbsolutePath()),
+            new File("shopping-samples").getAbsolutePath()),
     CALL_LOG_FILE("l", "log_file", "FILE", "File for logging API requests and responses"),
     NO_CONFIG("n", "noconfig", "Run samples without a configuration directory"),
     HELP("h", "help", "print this message");

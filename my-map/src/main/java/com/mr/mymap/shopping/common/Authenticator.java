@@ -36,6 +36,13 @@ public class Authenticator {
     }
 
     public Credential authenticate() throws IOException {
+        try {
+            Credential credential = GoogleCredential.getApplicationDefault().createScoped(scopes);
+            System.out.println("Loaded the Application Default Credentials.");
+            return credential;
+        } catch (IOException e) {
+            System.out.println(e);
+        }
         if (config.getPath() == null) {
             throw new IllegalArgumentException(
                     "Must use Application Default Credentials with no configuration directory.");

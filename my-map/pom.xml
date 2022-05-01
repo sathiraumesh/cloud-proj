@@ -52,6 +52,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+		<groupId>com.google.cloud</groupId>
+		<artifactId>google-cloud-storage</artifactId>
+		<version>1.17.0</version>
+	</dependency>
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-gcp-starter-sql-postgresql</artifactId>
 			<version>1.0.0.RELEASE</version>
