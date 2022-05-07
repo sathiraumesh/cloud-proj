@@ -8,6 +8,8 @@ import javax.persistence.Table;
 
 import javax.persistence.Entity;
 
+import java.math.BigInteger;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -19,6 +21,8 @@ public class ProductEntity {
     private Long id;
 
     private String productId;
+
+    BigInteger merchantId;
 
     private String name;
 

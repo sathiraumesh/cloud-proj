@@ -1,0 +1,23 @@
+<div class="content">
+  <div *ngIf="userInfo != undefined || idToken != undefined; then defined else notDefined"></div>
+
+  <ng-template #notDefined>
+    <div>Loading ...</div>
+  </ng-template>
+
+  <ng-template #defined>
+    <h2>Products List</h2>
+    <h4 class="sub-title">
+      Merchant ID:
+    </h4>
+
+  </ng-template>
+
+  <button
+    class="btn primary mt-4"
+    routerLink=""
+  >
+    Back
+  </button>
+
+</div>

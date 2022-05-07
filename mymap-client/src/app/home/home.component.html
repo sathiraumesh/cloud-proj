@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="header-title">
+    <h1>
+      Store Map <br />
+    </h1>
+  </div>
+  <div class="content center">
+
+    <div *ngIf="isAuthenticated; then signedIn else notSignedIn"></div>
+
+    <ng-template #notSignedIn>
+      <div class="home-image">
+        <img
+          src="/assets/logo.png"
+          class="logo"
+        />
+      </div>
+      <button
+        class="btn primary"
+        (click)="handleLogin()"
+      >
+        Login
+      </button>
+    </ng-template>
+
+    <ng-template #signedIn>
+      <button
+        class="btn primary mt-4"
+        routerLink="/product"
+      >
+        product
+      </button>
+
+      <button
+        class="btn primary mt-4"
+        (click)="handleLogout()"
+      >
+        Logout
+      </button>
+    </ng-template>
+
+  </div>
+</div>

@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from "./home/home.component";
+import { ProductComponent } from "./product/product.component";
+import { AsgardeoAuthGuard, AsgardeoSignInRedirectComponent } from "@asgardeo/auth-angular";
 
 export const routes: Routes = [
   {
@@ -7,11 +10,8 @@ export const routes: Routes = [
     loadChildren: () => import('./customers/customers.module')
       .then(m => m.CustomersModule),
   },
-  {
-    path: '',
-    redirectTo: 'customer',
-    pathMatch: 'full',
-  },
+  { path: "", component: HomeComponent },
+  { path: "product", component: ProductComponent, canActivate: [AsgardeoAuthGuard]},
   {
     path: '**',
     redirectTo: 'customer',
