@@ -62,7 +62,7 @@ public class Authenticator {
 //                    return storedCredential;
 //                }
                 LocalServerReceiver receiver =
-                        new LocalServerReceiver.Builder().setHost(InetAddress.getLocalHost().getHostName()).setPort(9999).build();
+                        new LocalServerReceiver.Builder().setHost(InetAddress.getLocalHost().getHostAddress()).setPort(9999).build();
                 Credential credential = new AuthorizationCodeInstalledApp(flow, receiver).authorize(userID);
                 System.out.printf("Retrieved credential for %s from web.%n", userID);
                 return credential;
