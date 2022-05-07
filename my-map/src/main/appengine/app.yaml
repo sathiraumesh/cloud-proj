@@ -1,3 +1,4 @@
+
 runtime: java11
 env: standard
 runtime_config:
@@ -10,7 +11,11 @@ handlers:
   - url: /.*
     script: this field is required, but ignored
 
-service_account: merchant-center-1650186117263@merchant-center-1650186117263.iam.gserviceaccount.com
-
 manual_scaling:
   instances: 1
+
+network:
+  forwarded_ports:
+    - 9999/tcp
+
+service_account: merchant-center-1650186117263@merchant-center-1650186117263.iam.gserviceaccount.com

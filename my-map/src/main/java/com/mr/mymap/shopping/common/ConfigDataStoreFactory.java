@@ -24,7 +24,7 @@ import java.util.Set;
  * #getDataStore} method.
  */
 public class ConfigDataStoreFactory implements DataStoreFactory {
-    public static final String UNUSED_ID = "unused";
+    public static final String UNUSED_ID = "hhhhhhh";
 
     private Config config;
 
@@ -48,11 +48,8 @@ public class ConfigDataStoreFactory implements DataStoreFactory {
         public ConfigDataStore(String id, Config config) {
             super(ConfigDataStoreFactory.this, id);
             this.tokenFile = new File(config.getPath(), OAUTH_TOKEN_FILENAME);
-            try {
-                this.token = loadToken();
-            } catch (IOException e) {
                 this.token = null;
-            }
+
         }
 
         private Token loadToken() throws IOException {
@@ -113,7 +110,6 @@ public class ConfigDataStoreFactory implements DataStoreFactory {
                 throw new IOException("Unexpected real user ID");
             }
             token = Token.fromStoredCredential(value);
-            writeToken();
             return this;
         }
 

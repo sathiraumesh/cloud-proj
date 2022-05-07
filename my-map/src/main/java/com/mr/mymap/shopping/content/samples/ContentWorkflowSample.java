@@ -16,6 +16,7 @@ import com.mr.mymap.shopping.common.Authenticator;
 import com.mr.mymap.shopping.common.BaseOption;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.GeneralSecurityException;
@@ -27,8 +28,9 @@ public abstract class ContentWorkflowSample extends BaseWorkflowSample {
     protected ShoppingContent content;
     protected ShoppingContent sandbox;
 
+    public InputStream inputStream;
     public ContentWorkflowSample(
-            ShoppingContent content, ShoppingContent sandbox, ContentConfig config) {
+            ShoppingContent content, ShoppingContent sandbox, ContentConfig config, InputStream inputStream) {
         this.content = content;
         this.sandbox = sandbox;
         this.config = config;
@@ -45,7 +47,7 @@ public abstract class ContentWorkflowSample extends BaseWorkflowSample {
             System.exit(1);
         }
         Authenticator authenticator =
-                new Authenticator(httpTransport, jsonFactory, ShoppingContentScopes.all(), config);
+                new Authenticator(httpTransport, jsonFactory, ShoppingContentScopes.all(), config, null);
         Credential credential = authenticator.authenticate();
 
         return new ShoppingContent.Builder(

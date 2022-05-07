@@ -31,7 +31,7 @@ public abstract class BaseSample {
         if (NO_CONFIG.isSet(parsedArgs)) {
             loadConfig(null);
         } else {
-            loadConfig(BaseOption.checkedConfigPath(parsedArgs));
+            loadConfig(null);
         }
         httpTransport = createHttpTransport();
         authenticator = loadAuthentication();

@@ -18,6 +18,11 @@ public class ProductController {
         return productService.getProductsByName(name);
     }
 
+    @PutMapping()
+    public void updateProduct(@RequestBody Product product){
+
+    }
+
     @GetMapping()
     public String getProduct() {
         return "The product list";

@@ -19,9 +19,9 @@ public class ContentConfig extends Config {
     private static final String CONTENT_DIR = "content";
     private static final String FILE_NAME = "merchant-info.json";
 
-    @Key private BigInteger merchantId;
+    @Key private BigInteger merchantId = new BigInteger("560884867");
 
-    @Key private String accountSampleUser;
+    @Key private String accountSampleUser = "merchant-center-1650186117263@merchant-center-1650186117263.iam.gserviceaccount.com";
 
     @Key private BigInteger accountSampleAdWordsCID;
 
@@ -30,30 +30,7 @@ public class ContentConfig extends Config {
     private String websiteUrl;
 
     public static ContentConfig load(File basePath) throws IOException {
-        if (basePath == null) {
-            return new ContentConfig();
-        }
-        File configPath = new File(basePath, CONTENT_DIR);
-        if (!configPath.exists()) {
-            throw new IOException(
-                    "Content API for Shopping configuration directory '"
-                            + configPath.getCanonicalPath()
-                            + "' does not exist");
-        }
-        File configFile = new File(configPath, FILE_NAME);
-        try (InputStream inputStream = new FileInputStream(configFile)) {
-            ContentConfig config = new JacksonFactory().fromInputStream(inputStream, ContentConfig.class);
-            config.setPath(configPath);
-            return config;
-        } catch (IOException e) {
-            throw new IOException(
-                    "Could not find or read the config file at "
-                            + configFile.getCanonicalPath()
-                            + ". You can use the "
-                            + FILE_NAME
-                            + " file in the "
-                            + "samples root as a template.");
-        }
+        return new ContentConfig();
     }
 
     public BigInteger getMerchantId() {

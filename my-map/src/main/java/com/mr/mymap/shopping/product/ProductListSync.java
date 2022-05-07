@@ -13,22 +13,23 @@ import com.mr.mymap.shopping.content.samples.ContentSample;
 
 import java.io.IOException;
 import java.math.BigInteger;
-import java.util.Optional;
+import java.util.Optional;;
 
-@Component
 public class ProductListSync extends ContentSample {
 
-    @Autowired
     private ProductRepository productRepository;
 
-    public ProductListSync(String[] args) throws IOException {
+
+    public ProductListSync(String[] args, BigInteger merchantID, ProductRepository productRepository ) throws IOException {
         super(args);
+        config.setMerchantId(merchantID);
+        this.productRepository = productRepository;
+
     }
 
     public void listProductsForMerchant(BigInteger merchantId, ShoppingContent content)
             throws IOException {
         ShoppingContent.Products.List productsList = content.products().list(merchantId);
-
         ProductsListResponse page = null;
 
         do {
@@ -42,9 +43,9 @@ public class ProductListSync extends ContentSample {
             }
             for (Product product : page.getResources()) {
 
+                System.out.println(product.getImageLink());
                Optional<ProductEntity> productEntity =  productRepository
                        .findProductByMerchantProductId(product.getId());
-
                 if (productEntity.isEmpty()){
                     ProductEntity newProduct = new ProductEntity();
                     newProduct.setProductId(product.getId());

@@ -27,7 +27,7 @@ public class ProductRepository {
     }
 
     public Optional<ProductEntity> findProductByName(String name) {
-        return em.createQuery("select p from product p " +
+        return em.createQuery("select p from ProductEntity p " +
                         "where p.name = :name ", ProductEntity.class)
                 .setParameter("name", name)
                 .setMaxResults(1)

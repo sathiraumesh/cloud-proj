@@ -10,12 +10,11 @@ import com.mr.mymap.shopping.product.ProductListSync;
 
 import java.io.IOException;
 
-@Service
+//@Service
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class SyncProductsScheduler {
 
-    @Autowired
     private ProductListSync productListSync;
 
     @Scheduled(fixedRate = 100000)

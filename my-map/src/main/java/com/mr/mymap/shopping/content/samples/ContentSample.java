@@ -7,12 +7,15 @@ import com.mr.mymap.shopping.common.BaseSample;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 /** Base class for the Content API samples. */
 public abstract class ContentSample extends BaseSample {
     protected ContentConfig config;
     protected ShoppingContent content;
     protected ShoppingContent sandbox;
+
+    public InputStream inputStream;
 
     public ContentSample(String args[]) throws IOException {
         super(args);
@@ -35,7 +38,7 @@ public abstract class ContentSample extends BaseSample {
     }
 
     protected Authenticator loadAuthentication() throws IOException {
-        return new Authenticator(httpTransport, jsonFactory, ShoppingContentScopes.all(), config);
+        return new Authenticator(httpTransport, jsonFactory, ShoppingContentScopes.all(), config, inputStream);
     }
 
     protected void retrieveConfiguration() throws IOException {
