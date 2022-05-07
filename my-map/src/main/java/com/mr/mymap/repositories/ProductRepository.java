@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,11 +44,27 @@ public class ProductRepository {
                 .getResultList().stream()
                 .findFirst();
     }
+
+    public Optional<ProductEntity> findProductByProductId(Long id) {
+        return em.createQuery("select p from ProductEntity p " +
+                "where p.id = :id ", ProductEntity.class)
+                .setParameter("id", id)
+                .setMaxResults(1)
+                .getResultList().stream()
+                .findFirst();
+    }
+
     public List<ProductEntity> findProductsByName(String name) {
         return em.createQuery("select p from ProductEntity p " +
                 "where lower(trim(p.name)) like :name", ProductEntity.class)
                 .setParameter("name", "%"+name.toLowerCase().trim()+"%")
                 .setMaxResults(5)
                 .getResultList();
+    }
+
+    public List<ProductEntity> findProdudctsBymerchantId(BigInteger merchantId) {
+        return  em.createQuery("select p from ProductEntity p " +
+                "where p.merchantId = :mId", ProductEntity.class).
+                setParameter("mId", merchantId).getResultList();
     }
 }

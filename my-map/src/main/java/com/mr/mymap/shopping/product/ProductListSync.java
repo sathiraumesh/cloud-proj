@@ -48,6 +48,7 @@ public class ProductListSync extends ContentSample {
                 if (productEntity.isEmpty()){
                     ProductEntity newProduct = new ProductEntity();
                     newProduct.setProductId(product.getId());
+                    newProduct.setMerchantId(merchantId);
                     newProduct.setName(product.getTitle());
                     newProduct.setImagePath(product.getImageLink());
                     productRepository.save(newProduct);

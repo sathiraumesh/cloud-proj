@@ -2,12 +2,16 @@ package com.mr.mymap.domain;
 
 import lombok.Data;
 
+import java.math.BigInteger;
+
 @Data
 public class Product {
 
     private Long id;
 
     private String productId;
+
+    BigInteger merchantId;
 
     private String name;
 
