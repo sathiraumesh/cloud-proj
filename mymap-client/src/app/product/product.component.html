@@ -1,4 +1,10 @@
-<div class="content">
+<div class="container">
+  <div class="header-title">
+    <h1>
+      Store Map <br />
+    </h1>
+  </div>
+<div class="content center">
   <div *ngIf="userInfo != undefined || idToken != undefined; then defined else notDefined"></div>
 
   <ng-template #notDefined>
@@ -8,8 +14,59 @@
   <ng-template #defined>
     <h2>Products List</h2>
     <h4 class="sub-title">
-      Merchant ID:
+      Merchant ID: {{userInfo.merchantId}}
     </h4>
+
+    <div style="width: 100%; margin: auto;" *ngIf="productsOfMerchant">
+      <div *ngFor="let product of productsOfMerchant" style="display: inline-flex; padding-top: 10px">
+<!--        <form>-->
+<!--          <div class="form-group">-->
+<!--            <label for="title">{{product.name}}</label>-->
+<!--            <input-->
+<!--              type="text"-->
+<!--              class="form-control"-->
+<!--              id="name"-->
+<!--              required-->
+<!--              [(ngModel)]="product.name"-->
+<!--              name="name"-->
+<!--            />-->
+<!--          </div>-->
+<!--        </form>-->
+        <div class="card">
+          <img src="/assets/logo.png" alt="{{product.name}}" style="width:100%">
+          <h1>{{product.name}}</h1>
+        </div>
+<!--        {{ product | json }}-->
+        <form (ngSubmit)="onSubmit()" style="padding: 0px 20px;">
+          <input type="hidden" id="id" [(ngModel)]="product.id" name="id">
+          <div class="form-group">
+            <label for="rack">Rack</label>
+            <input type="text" class="form-control" id="rack"
+                   [(ngModel)]="product.rack" name="rack">
+          </div>
+          <div class="form-group">
+            <label for="section">Section</label>
+            <input type="text" class="form-control" id="section"
+                   [(ngModel)]="product.section" name="section">
+          </div>
+          <div class="form-group">
+            <label for="lat">Latitude</label>
+            <input type="text" class="form-control" id="lat"
+                   [(ngModel)]="product.lat" name="lat">
+          </div>
+          <div class="form-group">
+            <label for="lon">Longitude</label>
+            <input type="text" class="form-control" id="lon"
+                   [(ngModel)]="product.lon" name="lon">
+          </div>
+          <button type="submit" class="btn btn-success" (click)="submittedProductId=product.id">Submit</button>
+        </form>
+      </div>
+      <div *ngIf="!productsOfMerchant">
+        <br />
+        <p>The product list is not accessible</p>
+      </div>
+    </div>
 
   </ng-template>
 
@@ -20,4 +77,5 @@
     Back
   </button>
 
+</div>
 </div>

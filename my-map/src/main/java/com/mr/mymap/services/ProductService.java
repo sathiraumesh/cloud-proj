@@ -12,5 +12,5 @@ public interface ProductService {
 
     List<Product> getProductsByMerchantId(String merchantId);
 
-    Product patchProduct(long id, Map<Object, Object> fields);
+    Product patchProduct(Long id, Map<Object, Object> fields);
 }

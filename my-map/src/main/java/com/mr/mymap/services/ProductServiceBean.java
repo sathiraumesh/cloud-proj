@@ -42,6 +42,7 @@ public class ProductServiceBean implements ProductService {
                 .stream().map(p -> {
                     Product product = new Product();
                     product.setId(p.getId());
+                    product.setMerchantId(p.getMerchantId());
                     product.setProductId(p.getProductId());
                     product.setName(p.getName());
                     product.setImagePath(p.getImagePath());
@@ -54,13 +55,20 @@ public class ProductServiceBean implements ProductService {
     }
 
     @Override
-    public Product patchProduct(long id, Map<Object, Object> fields) {
+    public Product patchProduct(Long id, Map<Object, Object> fields) {
         Optional<ProductEntity> product = productRepository.findProductByProductId(id);
         if (product.isPresent()){
             fields.forEach((key, value) -> {
                 Field field = ReflectionUtils.findField(ProductEntity.class, (String) key);
                 field.setAccessible(true);
-                ReflectionUtils.setField(field, product.get(), value);
+                if(key == "id") {
+                    ReflectionUtils.setField(field, product.get(), Long.valueOf((Integer)value));
+                } else if (key == "merchantId") {
+                    ReflectionUtils.setField(field, product.get(), BigInteger.valueOf((Integer)value));
+                }
+                else {
+                    ReflectionUtils.setField(field, product.get(), value);
+                }
             });
             return modelMapper.map(productRepository.save(product.get()), Product.class);
         }
