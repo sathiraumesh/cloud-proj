@@ -4,6 +4,7 @@
 
 export const environment = {
   api:'http://localhost:8080/api/',
+  redrict_url: 'http://localhost:4200',
   production: false
 };
 
