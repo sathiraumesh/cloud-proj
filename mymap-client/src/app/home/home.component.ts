@@ -14,18 +14,14 @@ export class HomeComponent implements OnInit {
   constructor(private auth: AsgardeoAuthService) {
     auth.on(Hooks.SignIn, () => {
       this.isAuthenticated = true;
-      console.log("signin");
     });
     auth.on(Hooks.SignOut, () => {
       this.isAuthenticated = false;
-      console.log("signout");
     });
   }
 
   ngOnInit() {
     this.auth.isAuthenticated().then((payload) => {
-      console.log(payload);
-      console.log('loading');
       this.isAuthenticated = payload
     });
   }

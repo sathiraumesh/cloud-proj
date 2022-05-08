@@ -1,0 +1,17 @@
+<div class="page-content">
+   <span> Store Map</span>
+    <div class="logo-container">
+        <img
+        src="/assets/logo.png"
+        class="logo"
+      />
+    </div>
+    <form class="merchant-id-form" [formGroup]="merchantIdForm" (ngSubmit)="submit()">
+        <div class="">
+            <input formControlName="merchantId" type="number">
+        </div>
+        <div style="margin-top:5px;">
+            <button  class="btn btn-primary" type="sumbit">Login to store</button>
+        </div>
+    </form>
+</div>

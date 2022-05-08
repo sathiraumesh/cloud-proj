@@ -50,6 +50,7 @@ public class ProductListSync extends ContentSample {
                     newProduct.setProductId(product.getId());
                     newProduct.setMerchantId(merchantId);
                     newProduct.setName(product.getTitle());
+                    newProduct.setPrice(product.getPrice().getValue() + product.getPrice().getCurrency());
                     newProduct.setImagePath(product.getImageLink());
                     productRepository.save(newProduct);
                 }

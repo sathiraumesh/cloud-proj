@@ -7,7 +7,7 @@ import { CoreModule } from './core/core.module';
 import { AsgardeoAuthModule } from "@asgardeo/auth-angular";
 import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from "@angular/common";
 import { environment } from 'src/environments/environment';
@@ -30,6 +30,7 @@ import { environment } from 'src/environments/environment';
       scope: [ "openid","profile" ]
     }),
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     CommonModule
   ],

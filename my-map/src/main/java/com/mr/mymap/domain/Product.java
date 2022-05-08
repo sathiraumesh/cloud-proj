@@ -25,7 +25,7 @@ public class Product {
 
     private String imagePath;
 
-    private String lon;
+    private Double lon;
 
-    private String lat;
+    private Double lat;
 }

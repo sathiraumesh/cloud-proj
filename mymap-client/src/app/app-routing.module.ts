@@ -3,6 +3,7 @@ import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from "./home/home.component";
 import { ProductComponent } from "./product/product.component";
 import { AsgardeoAuthGuard, AsgardeoSignInRedirectComponent } from "@asgardeo/auth-angular";
+import { StoreLoginComponent } from './customers/components/store-login/store-login.component';
 
 export const routes: Routes = [
   {
@@ -12,6 +13,7 @@ export const routes: Routes = [
   },
   { path: "", component: HomeComponent },
   { path: "product", component: ProductComponent, canActivate: [AsgardeoAuthGuard]},
+  { path: "store-login", component: StoreLoginComponent},
   {
     path: '**',
     redirectTo: 'customer',

@@ -1,6 +1,7 @@
 <div class="container product-container" *ngIf="product">
     <div class="row">
-        <img [src]="product.imagePath" alt="" width="50%">
+        <div col-md-3> <img [src]="product.imagePath" alt="" width="100px"></div>
+        
         <div class="col-12 col-md-12">
             Name: {{product?.name}}
         </div>
@@ -18,12 +19,12 @@
         </div>
     </div>
 </div>
-
-<div>
-    <google-map [center]="center" [zoom]="zoom">
-        <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"
-            [title]="marker.title" [options]="marker.options">
-        </map-marker>
-    </google-map>
-
-</div>
+<ng-container *ngIf="product">
+    <div class="map-container">
+        <google-map [center]="center" [zoom]="zoom" height="500px" width="80vw">
+            <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"
+                [title]="marker.title" [options]="marker.options">
+            </map-marker>
+        </google-map>
+    </div>
+</ng-container>

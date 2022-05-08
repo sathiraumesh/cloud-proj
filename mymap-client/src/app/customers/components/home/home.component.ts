@@ -12,7 +12,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.productSearchService$.productAnnounceSubscription.subscribe(data => {
-      console.log(data)
     })
   }
 

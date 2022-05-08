@@ -40,7 +40,6 @@ export class ProductComponent implements OnInit {
       this.isAuthenticated = payload;
       if (this.isAuthenticated) {
         this.auth.getBasicUserInfo().then((payload) => {
-          console.log(payload);
           this.userInfo = payload;
         }).then(() => {
           this.getProductsOfMerchant(this.userInfo.merchantId);
@@ -58,10 +57,8 @@ export class ProductComponent implements OnInit {
         products => {
           // @ts-ignore
           this.productsOfMerchant = products;
-          console.log(products);
         },
         error => {
-          console.log(error);
         });
   }
   updateProduct(): void {
@@ -69,7 +66,6 @@ export class ProductComponent implements OnInit {
     this.productService.update(this.submittedProductId, this.productsOfMerchant[this.position])
       .subscribe(
         response => {
-          console.log(response);
           this.message = 'The product was updated!';
         },
         error => {

@@ -36,7 +36,7 @@ public class ProductEntity {
 
     private String imagePath;
 
-    private String lon;
+    private double lon;
 
-    private String lat;
+    private double lat;
 }

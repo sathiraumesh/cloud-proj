@@ -36,7 +36,7 @@ public class Authenticator {
     }
 
     public Credential authenticate() throws IOException {
-   
+
         File serviceAccountFile = new File(config.getPath(), "service-account.json");
 
         if (serviceAccountFile.exists()) {

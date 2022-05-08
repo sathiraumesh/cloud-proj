@@ -13,19 +13,34 @@ export class ProductSearchComponent implements OnInit {
   public center: any;
   public product: ProductModel | undefined;
   public markers: any = [];
+  
 
   constructor(private productSearchService$: ProductSearchService) { }
 
   ngOnInit(): void {
     this.productSearchService$.productAnnounceSubscription.subscribe((data: { product: ProductModel }) => {
       this.product = data.product
+      if(this.product.lat && this.markers.length<=2){
+        this.markers.push({
+          position: {
+            lat: this.product.lat,
+            lng: this.product.lon,
+          },
+          label: {
+            color: 'red',
+            text: this.product.name + (this.markers.length + 1),
+          },
+          title: 'you' + (this.markers.length + 1),
+          options: {animation: google.maps.Animation.BOUNCE}
+        })
+      }
     })
-    navigator.geolocation.getCurrentPosition((position) => {
+    
+    navigator.geolocation.watchPosition((position) => {
       this.center = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       }
-
       this.addMarker()
     })
 
@@ -34,16 +49,22 @@ export class ProductSearchComponent implements OnInit {
   addMarker() {
     this.markers.push({
       position: {
-        lat: this.center.lat + ((Math.random() - 0.5) * 2) / 10,
-        lng: this.center.lng + ((Math.random() - 0.5) * 2) / 10,
+        lat: this.center.lat,
+        lng: this.center.lng,
       },
       label: {
         color: 'red',
-        text: 'Marker label ' + (this.markers.length + 1),
+        text: 'you' + (this.markers.length + 1),
       },
-      title: 'Marker title ' + (this.markers.length + 1),
-      options: { animation: google.maps.Animation.BOUNCE },
+      title: 'you' + (this.markers.length + 1),
     })
+  }
+
+  test(){
+    this.center = {
+      lat: 0,
+      lng: 0
+    }
   }
 }
 

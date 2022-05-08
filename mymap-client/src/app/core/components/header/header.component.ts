@@ -37,7 +37,6 @@ export class HeaderComponent implements OnInit {
       this.getProducts(text)
     }));
     const clicksWithClosedPopup$ = this.click$.pipe(tap(t => {
-      console.log("p")
     }), filter(() => !this.instance.isPopupOpen()));
     const inputFocus$ = this.focus$;
 
