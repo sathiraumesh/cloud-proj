@@ -23,8 +23,8 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     CoreModule,
     AsgardeoAuthModule.forRoot({
-      signInRedirectURL: environment.appRedirectUrl,
-      signOutRedirectURL: environment.appRedirectUrl,
+      signInRedirectURL: environment.redrict_url,
+      signOutRedirectURL: environment.redrict_url,
       clientID: "QShFsljzJkMXUPCMeUhkClJf_KIa",
       baseUrl: "https://api.asgardeo.io/t/techcauldron",
       scope: [ "openid","profile" ]

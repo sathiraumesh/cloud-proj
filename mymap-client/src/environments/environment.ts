@@ -4,8 +4,8 @@
 
 export const environment = {
   api:'http://localhost:8080/api/',
-  production: false,
-  appRedirectUrl: 'http://localhost:4200'
+  redrict_url: 'http://localhost:4200',
+  production: false
 };
 
 /*
