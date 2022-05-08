@@ -14,7 +14,7 @@ public class ExampleProductFactory {
     private static final String CHANNEL = "online";
     private static final String CONTENT_LANGUAGE = "en";
     private static final String TARGET_COUNTRY = "GB";
-    private static final String OFFER_ID = "book123";
+    private static final String OFFER_ID = "test123";
     private static final int PRODUCT_COUNT = 10;
 
     public static String sampleProductId() {
@@ -39,18 +39,18 @@ public class ExampleProductFactory {
 
         return new Product()
                 .setOfferId(offerId)
-                .setTitle("A Tale of Two Cities")
-                .setDescription("A classic novel about the French Revolution")
-                .setLink(websiteUrl + "/tale-of-two-cities.html")
-                .setImageLink(websiteUrl + "/tale-of-two-cities.jpg")
+                .setTitle("Harry Potter and the Philosopher's Stone")
+                .setDescription("Magical world")
+                .setLink(websiteUrl + "/harry-potter-philosophers-stone.html")
+                .setImageLink(websiteUrl + "/harry-potter-philosophers-stone.jpg")
                 .setChannel(CHANNEL)
                 .setContentLanguage(CONTENT_LANGUAGE)
                 .setTargetCountry(TARGET_COUNTRY)
                 .setAvailability("in stock")
                 .setCondition("new")
                 .setGoogleProductCategory("Media > Books")
-                .setGtin("9780007350896")
-                .setPrice(new Price().setValue("2.50").setCurrency("GBP"))
+                .setGtin("9780007350897")
+                .setPrice(new Price().setValue("3.00").setCurrency("GBP"))
                 .setShipping(
                         ImmutableList.of(
                                 new ProductShipping()

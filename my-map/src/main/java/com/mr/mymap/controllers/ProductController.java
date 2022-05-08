@@ -10,6 +10,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(path = "/api/products")
+@CrossOrigin(origins = "http://localhost:4200")
 @AllArgsConstructor
 public class ProductController {
     private final  ProductService productService;
@@ -24,6 +25,7 @@ public class ProductController {
         return productService.getProductsByMerchantId(merchantId);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200", methods = RequestMethod.PATCH)
     @PatchMapping("{id}")
     public Product patchProduct(@PathVariable Long id, @RequestBody Map<Object, Object> fields) {
         return productService.patchProduct(id, fields);

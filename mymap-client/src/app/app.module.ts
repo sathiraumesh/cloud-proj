@@ -7,6 +7,10 @@ import { CoreModule } from './core/core.module';
 import { AsgardeoAuthModule } from "@asgardeo/auth-angular";
 import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from "@angular/common";
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -19,12 +23,15 @@ import { ProductComponent } from './product/product.component';
     AppRoutingModule,
     CoreModule,
     AsgardeoAuthModule.forRoot({
-      signInRedirectURL: "http://localhost:4200",
-      signOutRedirectURL: "http://localhost:4200",
+      signInRedirectURL: environment.appRedirectUrl,
+      signOutRedirectURL: environment.appRedirectUrl,
       clientID: "QShFsljzJkMXUPCMeUhkClJf_KIa",
       baseUrl: "https://api.asgardeo.io/t/techcauldron",
       scope: [ "openid","profile" ]
-    })
+    }),
+    FormsModule,
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
