@@ -50,7 +50,7 @@ public class ProductServiceBean implements ProductService {
                     product.setName(p.getName());
                     product.setImagePath(p.getImagePath());
                     product.setLat(p.getLat());
-                    product.setLon(p.getLat());
+                    product.setLon(p.getLon());
                     product.setRack(p.getRack());
                     product.setSection(p.getSection());
                     return product;
