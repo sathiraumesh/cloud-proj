@@ -5,7 +5,7 @@
     </h1>
   </div>
 <div class="content center">
-  <div *ngIf="userInfo != undefined || idToken != undefined; then defined else notDefined"></div>
+  <div *ngIf="userInfo != undefined && idToken != undefined; then defined else notDefined"></div>
 
   <ng-template #notDefined>
     <div>Loading ...</div>
@@ -18,7 +18,7 @@
     </h4>
 
     <div style="width: 100%; margin: auto;" *ngIf="productsOfMerchant">
-      <div *ngFor="let product of productsOfMerchant" style="display: inline-flex; padding-top: 10px">
+      <div *ngFor="let product of productsOfMerchant" style="display: inline-flex; padding-top: 10px" class="center">
 <!--        <form>-->
 <!--          <div class="form-group">-->
 <!--            <label for="title">{{product.name}}</label>-->
@@ -49,17 +49,28 @@
             <input type="text" class="form-control" id="section"
                    [(ngModel)]="product.section" name="section">
           </div>
-          <div class="form-group">
-            <label for="lat">Latitude</label>
-            <input type="text" class="form-control" id="lat"
-                   [(ngModel)]="product.lat" name="lat">
+<!--          <div class="form-group">-->
+<!--            <label for="lat">Latitude</label>-->
+<!--            <input type="text" class="form-control" id="lat"-->
+<!--                   [(ngModel)]="product.lat" name="lat">-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="lon">Longitude</label>-->
+<!--            <input type="text" class="form-control" id="lon"-->
+<!--                   [(ngModel)]="product.lon" name="lon">-->
+<!--          </div>-->
+          <input type="hidden" class="form-control" id="lat" [(ngModel)]="product.lat" name="lat">
+          <input type="hidden" class="form-control" id="lon" [(ngModel)]="product.lon" name="lon">
+          <div class="map-container" style="padding-top: 10px">
+            <google-map [center]="center" [zoom]="zoom" height="250px" width="500px">
+<!--              <div *ngIf="product.lat == 0; then test else notest"></div>-->
+                <map-marker *ngIf="center != undefined && product.lat == 0" [position]={lat:center.lat,lng:center.lng} label="" title="" [options]="{draggable:true}" (mapDragend)="product.lat=getLatitude($event); product.lon=getLongitude($event);">
+                </map-marker>
+              <map-marker *ngIf="center != undefined && product.lat != 0" [position]={lat:product.lat,lng:product.lon} label="" title="" [options]="{draggable:true}" (mapDragend)="product.lat=getLatitude($event); product.lon=getLongitude($event);">
+              </map-marker>
+            </google-map>
           </div>
-          <div class="form-group">
-            <label for="lon">Longitude</label>
-            <input type="text" class="form-control" id="lon"
-                   [(ngModel)]="product.lon" name="lon">
-          </div>
-          <button type="submit" class="btn btn-success" (click)="submittedProductId=product.id">Submit</button>
+          <button type="submit" class="btn btn-success" (click)="submittedProductId=product.id">Update</button>
         </form>
       </div>
       <div *ngIf="!productsOfMerchant">

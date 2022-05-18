@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from "@angular/common";
 import { environment } from 'src/environments/environment';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { environment } from 'src/environments/environment';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

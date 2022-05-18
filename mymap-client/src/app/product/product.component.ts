@@ -19,6 +19,9 @@ export class ProductComponent implements OnInit {
   message = '';
   submittedProductId: any;
   position: any;
+  public center: any;
+  public zoom = 30;
+  public markers: any = [];
 
   constructor(private auth: AsgardeoAuthService, private productService: ProductService, private route: ActivatedRoute,
               private router: Router) {
@@ -36,6 +39,13 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    navigator.geolocation.watchPosition((position) => {
+      this.center = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      }
+    });
+
     this.auth.isAuthenticated().then((payload) => {
       this.isAuthenticated = payload;
       if (this.isAuthenticated) {
@@ -47,6 +57,15 @@ export class ProductComponent implements OnInit {
         this.auth.getIDToken().then((payload) => this.idToken = this.parseIdToken(payload));
       }
     });
+  }
+
+  getLatitude(event: any){
+    console.log(event.latLng.lat());
+    return event.latLng.lat();
+  }
+  getLongitude(event: any){
+    console.log(event.latLng.lng());
+    return event.latLng.lng();
   }
 
   // @ts-ignore
